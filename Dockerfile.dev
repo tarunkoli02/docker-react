@@ -1,0 +1,13 @@
+FROM node:16-alpine
+
+WORKDIR /usr/app
+
+COPY ./package.json .
+
+RUN npm set strict-ssl false
+RUN npm install
+RUN npm set strict-ssl true
+
+COPY ./ ./
+
+CMD [ "npm", "start" ]
